@@ -24,7 +24,8 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='').split(',')
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -161,8 +162,13 @@ SIMPLE_JWT={
 STATIC_URL = 'static/'
 
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost',
+    'http://localhost:8081',  
+    'http://127.0.0.1',
+]
 
+CORS_ALLOW_CREDENTIALS = True
 TMDB_API_KEY = config('TMDB_API_KEY')
 
 
